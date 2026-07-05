@@ -17,9 +17,7 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
-
-    /* NAV */
+    body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); }
     nav {
       position: fixed; top: 0; width: 100%; background: rgba(15,23,42,0.97);
       backdrop-filter: blur(10px); z-index: 1000; padding: 0 5%;
@@ -30,8 +28,6 @@
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
-
-    /* HERO */
     .hero {
       min-height: 100vh; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
       display: flex; align-items: center; padding: 80px 5% 60px;
@@ -52,22 +48,16 @@
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
     .hero-current { margin-top: 40px; border-left: 3px solid var(--accent); padding-left: 16px; color: #94a3b8; font-size: 0.95rem; }
     .hero-current strong { color: #e2e8f0; }
-
-    /* METRICS */
     .metrics { background: var(--primary); padding: 48px 5%; }
     .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
     .metric-card { text-align: center; padding: 28px 16px; border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; background: rgba(59,130,246,0.05); }
     .metric-card .num { font-size: 2.2rem; font-weight: 800; color: var(--accent); }
     .metric-card .label { color: #94a3b8; font-size: 0.85rem; margin-top: 6px; }
-
-    /* SECTIONS */
     section { padding: 80px 5%; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-tag { font-size: 0.8rem; color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
     .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text); margin-bottom: 12px; }
     .section-sub { color: var(--muted); font-size: 1rem; max-width: 600px; margin-bottom: 48px; }
-
-    /* ABOUT */
     #about { background: #fff; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
     .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -76,32 +66,26 @@
     .about-card h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 6px; }
     .about-card p { font-size: 0.85rem; color: var(--muted); }
     .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
-
-    /* EXPERIENCE */
     #experience { background: var(--bg); }
     .exp-list { display: flex; flex-direction: column; gap: 24px; }
     .exp-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; position: relative; overflow: hidden; }
-    .exp-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--accent), var(--accent2)); }
+    .exp-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--accent), var(--accent2)); }
     .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
     .exp-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
     .exp-company { font-size: 0.95rem; color: var(--accent); margin-top: 2px; }
     .exp-date { font-size: 0.82rem; background: rgba(59,130,246,0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
     .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .exp-bullets li { font-size: 0.9rem; color: var(--muted); padding-left: 18px; position: relative; line-height: 1.6; }
-    .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+    .exp-bullets li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
     .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .exp-tag { font-size: 0.75rem; background: var(--bg); border: 1px solid var(--border); color: var(--muted); padding: 3px 10px; border-radius: 20px; }
-
-    /* SKILLS */
     #skills { background: #fff; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-    .skill-group h3 { font-size: 1rem; margin-bottom: 18px; color: var(--text); display: flex; align-items: center; gap: 8px; }
+    .skill-group h3 { font-size: 1rem; margin-bottom: 18px; color: var(--text); }
     .skill-item { margin-bottom: 14px; }
     .skill-label { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--text); margin-bottom: 6px; }
     .skill-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
-    .skill-fill { height: 100%; border-radius: 10px; background: linear-gradient(to right, var(--accent), var(--accent2)); transition: width 1s ease; }
-
-    /* CERTIFICATIONS */
+    .skill-fill { height: 100%; border-radius: 10px; background: linear-gradient(to right, var(--accent), var(--accent2)); }
     #certifications { background: var(--bg); }
     .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .cert-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
@@ -109,8 +93,6 @@
     .cert-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
     .cert-card .cert-by { font-size: 0.82rem; color: var(--accent); margin-bottom: 8px; }
     .cert-card .cert-date { font-size: 0.78rem; color: var(--muted); }
-
-    /* CONTACT */
     #contact { background: var(--primary); }
     #contact .section-title { color: #fff; }
     #contact .section-sub { color: #94a3b8; }
@@ -119,10 +101,7 @@
     .contact-card .c-icon { font-size: 1.5rem; }
     .contact-card .c-label { font-size: 0.78rem; color: #64748b; margin-bottom: 4px; }
     .contact-card .c-val { font-size: 0.9rem; color: #e2e8f0; word-break: break-all; }
-
-    /* FOOTER */
     footer { background: #060d1a; text-align: center; padding: 24px; color: #475569; font-size: 0.85rem; }
-
     @media (max-width: 768px) {
       .about-grid { grid-template-columns: 1fr; }
       .about-cards { grid-template-columns: 1fr; }
@@ -131,8 +110,6 @@
   </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo"><span>SS</span> Sriram Sangasani</div>
   <ul class="nav-links">
@@ -143,8 +120,6 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-tag">☁️ Azure · Microsoft Fabric · Databricks · Terraform</div>
@@ -159,19 +134,15 @@
     </div>
   </div>
 </section>
-
-<!-- METRICS -->
 <div class="metrics">
   <div class="metrics-grid">
     <div class="metric-card"><div class="num">10M+</div><div class="label">Daily Records Processed</div></div>
     <div class="metric-card"><div class="num">99.9%</div><div class="label">Pipeline Reliability</div></div>
     <div class="metric-card"><div class="num">50+</div><div class="label">Data Sources Managed</div></div>
     <div class="metric-card"><div class="num">35%</div><div class="label">Reduction in Dev Time</div></div>
-    <div class="metric-card"><div class="num">7+</div><div class="label">Years of Experience</div></div>
+    <div class="metric-card"><div class="num">7+3��'div><div class="label">Years of Experience</div></div>
   </div>
 </div>
-
-<!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="section-tag">About Me</div>
@@ -179,11 +150,11 @@
     <div class="about-grid">
       <div class="about-text">
         <p>I design and build scalable data pipelines and cloud data platforms on <strong>Microsoft Azure</strong>, specialising in <strong>Microsoft Fabric, Azure Synapse, Azure Data Factory</strong> and <strong>Databricks</strong>.</p>
-        <p>My work spans high-volume ETL/ELT pipeline development, data lakehouse architecture, CI/CD automation, infrastructure-as-code with Terraform, and mentoring engineering teams — all delivered across banking, retail, gaming, and public sector environments.</p>
+        <p>My work spans high-volume ETL/ELT pipeline development, data lakehouse architecture, CI/CD automation, infrastructure-as-code with Terraform, and mentoring engineering teams across banking, retail, gaming, and public sector.</p>
         <p>I combine deep data engineering expertise with platform engineering practices to deliver secure, scalable, and well-governed data solutions.</p>
       </div>
       <div class="about-cards">
-        <div class="about-card"><div class="icon">🎓</div><h4>Education</h4><p>MSc Cyber Security, Middlesex University London<br>BTech Computer Science, LPU India</p></div>
+        <div class="about-card"><div class="icon">🎐</div><h4>Education</h4><p >MSc Cyber Security, Middlesex University London<br>BTech Computer Science, LPU India</p></div>
         <div class="about-card"><div class="icon">☁️</div><h4>Specialisation</h4><p>Azure Data Engineering · Microsoft Fabric · ETL Pipelines · Data Lakehouse</p></div>
         <div class="about-card"><div class="icon">📍</div><h4>Location</h4><p>TW3, London, UK</p></div>
         <div class="about-card"><div class="icon">🎯</div><h4>Current Focus</h4><p>Microsoft Fabric Migration · Medallion Architecture · Real-time Streaming</p></div>
@@ -191,22 +162,20 @@
     </div>
   </div>
 </section>
-
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-inner">
     <div class="section-tag">Experience</div>
     <h2 class="section-title">Work History</h2>
     <p class="section-sub">7+ years delivering enterprise data solutions across public sector, banking, retail and gaming.</p>
     <div class="exp-list">
-
       <div class="exp-card">
         <div class="exp-header">
           <div><div class="exp-title">Senior Data Engineer</div><div class="exp-company">London Borough of Islington Council</div></div>
           <span class="exp-date">Jun 2024 — Present</span>
         </div>
         <ul class="exp-bullets">
-          <li>Designed and developed scalable pipelines processing <strong>10M+ records daily</strong> across 50+ data sources with 99.9% reliability.</li>
+          <li>Designed and developed scalable pipelines processing strong>10M+ records
+Here is the base64 encoded content of the portfolio website</strong> across 50+ data sources with 99.9% reliability.</li>
           <li>Led team of 5+ engineers on strategic migration from Azure Synapse Analytics to Microsoft Fabric.</li>
           <li>Architected Medallion architecture (Bronze, Silver, Gold) with data governance, row-level security and lineage.</li>
           <li>Implemented real-time data streaming using Microsoft Fabric Event Streams and KQL Database.</li>
@@ -216,7 +185,6 @@
           <span class="exp-tag">Microsoft Fabric</span><span class="exp-tag">Azure Synapse</span><span class="exp-tag">Python</span><span class="exp-tag">Pandas</span><span class="exp-tag">Pydantic</span><span class="exp-tag">Azure DevOps</span><span class="exp-tag">KQL</span>
         </div>
       </div>
-
       <div class="exp-card">
         <div class="exp-header">
           <div><div class="exp-title">Data Engineer — Contract</div><div class="exp-company">Marni</div></div>
@@ -232,7 +200,6 @@
           <span class="exp-tag">Python</span><span class="exp-tag">Azure Data Factory</span><span class="exp-tag">Databricks</span><span class="exp-tag">Kafka</span><span class="exp-tag">Hadoop</span><span class="exp-tag">Azure SQL</span>
         </div>
       </div>
-
       <div class="exp-card">
         <div class="exp-header">
           <div><div class="exp-title">Azure Data Engineer</div><div class="exp-company">BetWay</div></div>
@@ -248,7 +215,6 @@
           <span class="exp-tag">PySpark</span><span class="exp-tag">Terraform</span><span class="exp-tag">Databricks</span><span class="exp-tag">ADLS Gen2</span><span class="exp-tag">Azure DevOps</span><span class="exp-tag">Unity Catalog</span>
         </div>
       </div>
-
       <div class="exp-card">
         <div class="exp-header">
           <div><div class="exp-title">Cloud Data Engineer</div><div class="exp-company">ROI Solutions</div></div>
@@ -264,7 +230,6 @@
           <span class="exp-tag">Scala</span><span class="exp-tag">Spark</span><span class="exp-tag">Snowflake</span><span class="exp-tag">MongoDB</span><span class="exp-tag">PostgreSQL</span><span class="exp-tag">Azure Data Factory</span>
         </div>
       </div>
-
       <div class="exp-card">
         <div class="exp-header">
           <div><div class="exp-title">Oracle (SQL) Developer / Support L2 Engineer</div><div class="exp-company">Accenture</div></div>
@@ -280,51 +245,42 @@
           <span class="exp-tag">SQL</span><span class="exp-tag">Oracle</span><span class="exp-tag">SQL Server</span><span class="exp-tag">PL/SQL</span>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- SKILLS -->
 <section id="skills">
   <div class="section-inner">
     <div class="section-tag">Skills</div>
     <h2 class="section-title">Technical Skills</h2>
     <p class="section-sub">A practical skill map across data engineering, cloud platforms, DevOps and databases.</p>
     <div class="skills-grid">
-
       <div class="skill-group">
-        <h3>☁️ Cloud & Data Engineering</h3>
+        <h3>☁️ Cloud and Data Engineering</h3>
         <div class="skill-item"><div class="skill-label"><span>Microsoft Azure</span><span>95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Microsoft Fabric</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Azure Data Factory</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Databricks</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Azure Synapse Analytics</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
       </div>
-
       <div class="skill-group">
-        <h3>⌨️ Programming & Databases</h3>
+        <h3>⌨️ Programming and Databases</h3>
         <div class="skill-item"><div class="skill-label"><span>Python (Pandas, PySpark)</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>SQL / T-SQL / PL-SQL</span><span>95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Snowflake</span><span>82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>MongoDB / PostgreSQL</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Scala</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
       </div>
-
       <div class="skill-group">
-        <h3>⚙️ Platform & DevOps</h3>
+        <h3>⚙️ Platform and DevOps</h3>
         <div class="skill-item"><div class="skill-label"><span>Terraform</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Azure DevOps / CI-CD</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Docker / Kubernetes</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Git</span><span>92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
         <div class="skill-item"><div class="skill-label"><span>Kafka / Hadoop</span><span>78%</span></div><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- CERTIFICATIONS -->
 <section id="certifications">
   <div class="section-inner">
     <div class="section-tag">Certifications</div>
@@ -338,8 +294,6 @@
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
     <div class="section-tag" style="color:#60a5fa">Contact</div>
@@ -353,8 +307,6 @@
     </div>
   </div>
 </section>
-
 <footer>© 2025 Sriram Sangasani. All rights reserved.</footer>
-
 </body>
 </html>
