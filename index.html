@@ -7,155 +7,122 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#1a0533 0%,#0d1b4b 50%,#0a2a1a 100%);background-attachment:fixed;color:#fff;min-height:100vh;}
+:root{--bg:#060612;--bg2:#0d0d1f;--card:#12122a;--border:#1e2048;--blue:#4f8ef7;--purple:#a855f7;--text:#e2e8f0;--muted:#64748b;}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth;}
+a{text-decoration:none;color:var(--blue);}
 
 /* NAV */
-nav{padding:1rem 4rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;background:rgba(26,5,51,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);}
-.logo{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,#f0abfc,#38bdf8,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.nav-links a{color:rgba(255,255,255,.45);font-size:.85rem;margin-left:2rem;text-decoration:none;transition:.3s;}
-.nav-links a:hover{color:#f0abfc;}
-.nav-links .hire{background:linear-gradient(135deg,#f0abfc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;border:1px solid rgba(240,171,252,.3);padding:.3rem .9rem;border-radius:999px;}
+nav{position:fixed;top:0;width:100%;z-index:999;padding:.9rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(6,6,18,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.logo{font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{color:var(--muted);font-size:.88rem;transition:.3s;letter-spacing:.03em;}
+.nav-links a:hover{color:var(--blue);}
 
-/* HERO */
-.hero{padding:5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;min-height:90vh;}
-.hero-text .greeting{font-size:.88rem;color:#f0abfc;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
-.hero-text h1{font-size:3.5rem;font-weight:900;line-height:1.05;margin-bottom:.6rem;}
-.hero-text h1 .grad{background:linear-gradient(135deg,#f0abfc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-text .sub{color:#38bdf8;font-size:1rem;font-weight:600;margin-bottom:1rem;}
-.hero-text p{color:rgba(255,255,255,.55);font-size:.92rem;line-height:1.8;margin-bottom:2rem;max-width:480px;}
-.cta-row{display:flex;gap:1rem;flex-wrap:wrap;}
-.cta-row a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:50px;font-size:.85rem;font-weight:600;text-decoration:none;transition:.3s;}
-.c1{background:linear-gradient(135deg,#f0abfc,#38bdf8);color:#111;}
-.c1:hover{opacity:.9;transform:translateY(-2px);}
-.c2{border:1px solid rgba(240,171,252,.4);color:#f0abfc;}
-.c2:hover{background:rgba(240,171,252,.1);}
-.c3{border:1px solid rgba(56,189,248,.3);color:#38bdf8;}
-.c3:hover{background:rgba(56,189,248,.1);}
-.hero-card-stack{position:relative;height:460px;}
-.h-card{position:absolute;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:20px;backdrop-filter:blur(10px);padding:1.2rem;}
-.main-card{width:270px;left:50%;transform:translateX(-50%);top:0;padding:0;overflow:hidden;border-radius:20px;}
-.main-card img{width:100%;height:300px;object-fit:cover;object-position:top;}
-.main-card .card-footer{padding:1.1rem;}
-.main-card .card-footer h4{font-size:.95rem;font-weight:700;}
-.main-card .card-footer p{font-size:.76rem;color:rgba(255,255,255,.5);margin-top:.2rem;}
-.stat-card{width:155px;right:0;top:70px;}
-.stat-card .sn{font-size:1.9rem;font-weight:900;background:linear-gradient(135deg,#4ade80,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.stat-card .sl{font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:.8rem;}
-.badge-card{width:170px;left:0;top:210px;}
-.badge-card .bc{display:flex;align-items:center;gap:.5rem;margin-bottom:.55rem;}
-.badge-card .bc i{color:#f0abfc;font-size:.85rem;width:16px;}
-.badge-card .bc span{font-size:.78rem;color:rgba(255,255,255,.75);}
-.avail-card{width:160px;right:10px;bottom:0;}
-.avail-card .dot{width:10px;height:10px;border-radius:50%;background:#4ade80;display:inline-block;margin-right:.4rem;box-shadow:0 0 8px #4ade80;}
-.avail-card p{font-size:.78rem;color:rgba(255,255,255,.7);}
-.avail-card .role-small{font-size:.7rem;color:#4ade80;margin-top:.3rem;}
+/* HERO - SPLIT LAYOUT */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:6rem 5rem 4rem;background:radial-gradient(ellipse at 70% 30%,#1a0a3e 0%,var(--bg) 55%);}
+.hero-text .badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.3);color:var(--blue);padding:.4rem 1rem;border-radius:999px;font-size:.82rem;margin-bottom:1.5rem;}
+.hero-text h1{font-size:3.2rem;font-weight:900;line-height:1.05;margin-bottom:.5rem;}
+.hero-text h1 .grad{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-text .role{font-size:1.3rem;color:var(--purple);font-weight:600;margin-bottom:1rem;}
+.hero-text p{color:var(--muted);line-height:1.7;font-size:.95rem;margin-bottom:2rem;max-width:480px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-p{background:linear-gradient(135deg,#3b82f6,#7c3aed);color:#fff;padding:.7rem 1.6rem;border-radius:8px;font-weight:600;font-size:.9rem;transition:.3s;}
+.btn-p:hover{opacity:.85;transform:translateY(-2px);}
+.btn-o{border:1px solid var(--blue);color:var(--blue);padding:.7rem 1.6rem;border-radius:8px;font-weight:600;font-size:.9rem;transition:.3s;}
+.btn-o:hover{background:rgba(79,142,247,0.1);}
 
-/* ABOUT STRIP */
-.about-strip{background:rgba(255,255,255,.03);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);padding:3rem 4rem;display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:center;}
-.about-strip p{color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.9;}
-.about-strip p span{color:#f0abfc;font-weight:600;}
-.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.stat-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.2rem;text-align:center;}
-.stat-box .sn{font-size:2rem;font-weight:900;background:linear-gradient(135deg,#f0abfc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.stat-box .sl{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;}
+/* PHOTO SIDE */
+.hero-photo{display:flex;flex-direction:column;align-items:center;gap:2rem;}
+.photo-frame{position:relative;width:280px;height:280px;}
+.photo-frame::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));z-index:0;}
+.photo-frame::after{content:'';position:absolute;inset:-12px;border-radius:50%;background:linear-gradient(135deg,rgba(79,142,247,0.2),rgba(168,85,247,0.2));z-index:-1;animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.05);opacity:1;}}
+.photo-frame img{width:280px;height:280px;border-radius:50%;object-fit:cover;position:relative;z-index:1;border:4px solid var(--bg);}
+.stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;width:100%;}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center;}
+.stat-box .n{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-box .l{color:var(--muted);font-size:.75rem;margin-top:.2rem;}
+
+/* SECTIONS */
+section{padding:5rem 2rem;}
+.container{max-width:1100px;margin:0 auto;}
+.sec-title{text-align:center;margin-bottom:3rem;}
+.sec-title h2{font-size:2rem;font-weight:800;}
+.sec-title h2 span{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-title p{color:var(--muted);margin-top:.4rem;font-size:.9rem;}
+
+/* ABOUT */
+#about{background:var(--bg2);}
+.about-wrap{display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;}
+.about-wrap p{color:#94a3b8;line-height:1.8;margin-bottom:1rem;font-size:.95rem;}
+.info-list{list-style:none;}
+.info-list li{display:flex;align-items:center;gap:.75rem;color:#94a3b8;font-size:.88rem;padding:.5rem 0;border-bottom:1px solid var(--border);}
+.info-list li i{color:var(--blue);width:16px;}
 
 /* SKILLS */
-.skills-section{padding:5rem 4rem;}
-.section-header{text-align:center;margin-bottom:3.5rem;}
-.section-header .label{font-size:.78rem;color:#f0abfc;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem;}
-.section-header h2{font-size:2.2rem;font-weight:900;}
-.section-header h2 span{background:linear-gradient(135deg,#f0abfc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.section-header p{color:rgba(255,255,255,.4);font-size:.88rem;margin-top:.5rem;}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.sk-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:2rem;transition:.3s;}
-.sk-card:hover{background:rgba(255,255,255,.07);border-color:rgba(240,171,252,.2);transform:translateY(-4px);}
-.sk-card .icon{font-size:2rem;margin-bottom:1rem;}
-.sk-card h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
-.sk-card .desc{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:1rem;}
-.sk-card .tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-.tag{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);padding:.25rem .65rem;border-radius:999px;font-size:.74rem;}
-.tag.pink{background:rgba(240,171,252,.1);color:#f0abfc;}
-.tag.blue{background:rgba(56,189,248,.1);color:#38bdf8;}
-.tag.green{background:rgba(74,222,128,.1);color:#4ade80;}
-.tag.yellow{background:rgba(251,191,36,.1);color:#fbbf24;}
+#skills{background:var(--bg);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;transition:.3s;}
+.skill-card:hover{border-color:var(--blue);transform:translateY(-4px);box-shadow:0 8px 30px rgba(79,142,247,0.1);}
+.skill-card h3{font-size:.9rem;font-weight:700;color:var(--blue);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.tag{background:rgba(79,142,247,0.08);color:#93c5fd;padding:.25rem .65rem;border-radius:999px;font-size:.78rem;border:1px solid rgba(79,142,247,0.15);}
 
 /* EXPERIENCE */
-.exp-section{padding:5rem 4rem;background:rgba(0,0,0,.15);}
-.timeline{position:relative;max-width:900px;margin:0 auto;}
-.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#f0abfc,#38bdf8,#4ade80,#fbbf24,#f87171);}
-.t-item{position:relative;padding-left:3rem;margin-bottom:2.5rem;}
-.t-item::before{content:'';position:absolute;left:-7px;top:1rem;width:16px;height:16px;border-radius:50%;border:2px solid #1a0533;}
-.t-item:nth-child(1)::before{background:#f0abfc;}
-.t-item:nth-child(2)::before{background:#38bdf8;}
-.t-item:nth-child(3)::before{background:#4ade80;}
-.t-item:nth-child(4)::before{background:#fbbf24;}
-.t-item:nth-child(5)::before{background:#f87171;}
-.t-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.8rem;transition:.3s;}
-.t-card:hover{background:rgba(255,255,255,.08);transform:translateX(4px);}
-.t-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem;}
-.t-card-top h4{font-size:1rem;font-weight:800;}
-.t-card-top .period{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);padding:.3rem .8rem;border-radius:999px;font-size:.74rem;}
-.t-card .co{font-size:.85rem;font-weight:600;margin-bottom:.8rem;}
-.t-item:nth-child(1) .co{color:#f0abfc;}
-.t-item:nth-child(2) .co{color:#38bdf8;}
-.t-item:nth-child(3) .co{color:#4ade80;}
-.t-item:nth-child(4) .co{color:#fbbf24;}
-.t-item:nth-child(5) .co{color:#f87171;}
-.t-card ul{padding-left:1.2rem;}
-.t-card ul li{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:.3rem;}
-.t-card .tech-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;}
+#experience{background:var(--bg2);}
+.timeline{position:relative;padding-left:2.5rem;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--blue),var(--purple));}
+.exp-item{position:relative;margin-bottom:2.5rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.5rem 1.5rem 1.5rem;transition:.3s;}
+.exp-item:hover{border-color:rgba(79,142,247,0.4);}
+.exp-item::before{content:'';position:absolute;left:-2.1rem;top:1.5rem;width:14px;height:14px;border-radius:50%;background:var(--blue);border:3px solid var(--bg2);box-shadow:0 0 0 3px rgba(79,142,247,0.3);}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem;}
+.exp-top h3{font-size:1.05rem;font-weight:700;}
+.period{background:rgba(168,85,247,0.1);color:#c084fc;padding:.2rem .7rem;border-radius:999px;font-size:.78rem;border:1px solid rgba(168,85,247,0.2);}
+.company{color:var(--purple);font-size:.88rem;font-weight:600;margin-bottom:.8rem;}
+.exp-item ul{color:#94a3b8;font-size:.86rem;line-height:1.75;padding-left:1.1rem;}
+.exp-item ul li{margin-bottom:.3rem;}
+.exp-item ul li strong{color:#c7d2fe;}
 
 /* CERTS */
-.certs-section{padding:5rem 4rem;}
-.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
-.cert-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.5rem;text-align:center;transition:.3s;}
-.cert-card:hover{transform:translateY(-4px);border-color:rgba(240,171,252,.3);}
-.cert-card .cert-icon{font-size:2rem;margin-bottom:.8rem;}
-.cert-card h4{font-size:.85rem;font-weight:700;margin-bottom:.3rem;line-height:1.4;}
-.cert-card .date{font-size:.72rem;color:rgba(255,255,255,.35);}
+#certifications{background:var(--bg);}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;text-align:center;transition:.3s;}
+.cert-card:hover{border-color:var(--purple);transform:translateY(-4px);}
+.cert-card .icon{font-size:2.2rem;margin-bottom:.7rem;}
+.cert-card h4{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:.4rem;line-height:1.4;}
+.cert-card span{color:var(--muted);font-size:.78rem;}
 
 /* EDUCATION */
-.edu-section{padding:5rem 4rem;background:rgba(0,0,0,.15);}
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:800px;margin:0 auto;}
-.edu-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:2rem;display:flex;gap:1.2rem;align-items:flex-start;transition:.3s;}
-.edu-card:hover{background:rgba(255,255,255,.08);}
-.edu-card .edu-icon{font-size:1.8rem;flex-shrink:0;}
-.edu-card h4{font-size:.92rem;font-weight:700;margin-bottom:.3rem;}
-.edu-card .school{font-size:.8rem;color:#38bdf8;margin-bottom:.2rem;}
-.edu-card .yr{font-size:.74rem;color:rgba(255,255,255,.35);}
+#education{background:var(--bg2);}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;}
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;border-left:3px solid var(--blue);}
+.edu-card h3{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.3rem;}
+.edu-card .school{color:var(--purple);font-size:.85rem;margin-bottom:.2rem;}
+.edu-card .period{color:var(--muted);font-size:.8rem;}
 
 /* CONTACT */
-.contact-section{padding:5rem 4rem;text-align:center;}
-.contact-section p{color:rgba(255,255,255,.5);font-size:.95rem;max-width:500px;margin:.8rem auto 2.5rem;}
-.contact-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;}
-.contact-link{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.8rem;border-radius:50px;font-size:.88rem;font-weight:600;text-decoration:none;transition:.3s;}
-.cl1{background:linear-gradient(135deg,#f0abfc,#38bdf8);color:#111;}
-.cl1:hover{opacity:.9;transform:translateY(-2px);}
-.cl2{border:1px solid rgba(240,171,252,.3);color:#f0abfc;}
-.cl2:hover{background:rgba(240,171,252,.08);}
-.cl3{border:1px solid rgba(56,189,248,.3);color:#38bdf8;}
-.cl3:hover{background:rgba(56,189,248,.08);}
-.cl4{border:1px solid rgba(74,222,128,.3);color:#4ade80;}
-.cl4:hover{background:rgba(74,222,128,.08);}
-.contact-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:700px;margin:3rem auto 0;}
-.ci-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.2rem;}
-.ci-card i{font-size:1.2rem;margin-bottom:.5rem;}
-.ci-card p{font-size:.8rem;color:rgba(255,255,255,.6);}
+#contact{background:var(--bg);}
+.contact-wrap{max-width:700px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:flex;align-items:center;gap:1rem;transition:.3s;}
+.contact-card:hover{border-color:var(--blue);}
+.contact-card .ci{width:42px;height:42px;background:rgba(79,142,247,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1.1rem;}
+.contact-card h4{font-size:.78rem;color:var(--muted);margin-bottom:.2rem;}
+.contact-card a,.contact-card p{font-size:.85rem;color:var(--text);}
 
-/* FOOTER */
-footer{border-top:1px solid rgba(255,255,255,.07);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;}
-footer p{font-size:.8rem;color:rgba(255,255,255,.3);}
-footer .grad-text{background:linear-gradient(135deg,#f0abfc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
+footer{text-align:center;padding:2rem;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border);}
 
 @media(max-width:900px){
-  .hero,.about-strip,.skills-grid,.certs-grid,.edu-grid{grid-template-columns:1fr;}
-  nav{padding:1rem 1.5rem;}
-  .hero,.skills-section,.exp-section,.certs-section,.edu-section,.contact-section{padding:3rem 1.5rem;}
-  .hero-card-stack{height:350px;margin-top:2rem;}
-  .nav-links{display:none;}
-  .contact-info-grid{grid-template-columns:1fr;}
-  footer{flex-direction:column;gap:.5rem;text-align:center;}
+  #hero{grid-template-columns:1fr;padding:5rem 2rem 3rem;text-align:center;}
+  .hero-photo{order:-1;}
+  .hero-btns{justify-content:center;}
+  .hero-text p{margin:0 auto 2rem;}
+  .about-wrap{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .hero-text h1{font-size:2.2rem;}
+  .photo-frame,.photo-frame img{width:200px;height:200px;}
+  .nav-links{gap:.8rem;}
 }
 </style>
 </head>
@@ -168,332 +135,186 @@ footer .grad-text{background:linear-gradient(135deg,#f0abfc,#38bdf8);-webkit-bac
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
-    <a href="#certs">Certifications</a>
-    <a href="#contact" class="hire">Hire Me</a>
+    <a href="#certifications">Certs</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="about">
+<section id="hero">
   <div class="hero-text">
-    <div class="greeting">&#128075; Hello, World!</div>
-    <h1>I'm<br><span class="grad">Sriram<br>Sangasani</span></h1>
-    <div class="sub">&#9889; Senior Data Engineer</div>
-    <p>7+ years building scalable Azure data pipelines. I transform raw data into business intelligence using Microsoft Fabric, Databricks, Python &amp; PySpark — processing <strong style="color:#f0abfc;">10M+ records daily</strong>.</p>
-    <div class="cta-row">
-      <a href="#experience" class="c1"><i class="fas fa-briefcase"></i> View Experience</a>
-      <a href="https://linkedin.com/in/sriram-sangasani" target="_blank" class="c2"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="/cdn-cgi/l/email-protection#493a28272e283a2827203a3b203b2824092e24282025672a2624" class="c3"><i class="fas fa-envelope"></i> Email Me</a>
+    <div class="badge"><i class="fas fa-circle" style="color:#22c55e;font-size:.5rem;"></i> Available for Opportunities</div>
+    <h1>Hi, I'm<br><span class="grad">Sriram Sangasani</span></h1>
+    <div class="role">Senior Data Engineer</div>
+    <p>7+ years building scalable data pipelines on Azure. Specialising in Microsoft Fabric, Databricks, Python & PySpark — turning raw data into business intelligence.</p>
+    <div class="hero-btns">
+      <a href="#experience" class="btn-p">View Experience</a>
+      <a href="#contact" class="btn-o">Get In Touch</a>
     </div>
   </div>
-  <div class="hero-card-stack">
-    <div class="h-card main-card">
+  <div class="hero-photo">
+    <div class="photo-frame">
       <img src="1718634827557.jpg" alt="Sriram Sangasani"/>
-      <div class="card-footer">
-        <h4>Sriram Sangasani</h4>
-        <p>Senior Data Engineer &bull; TW3, London</p>
-      </div>
     </div>
-    <div class="h-card stat-card">
-      <div class="sn">7+</div><div class="sl">Years Experience</div>
-      <div class="sn" style="font-size:1.3rem;">10M+</div><div class="sl">Records / Day</div>
-      <div class="sn" style="font-size:1.3rem;">5</div><div class="sl">Companies</div>
-    </div>
-    <div class="h-card badge-card">
-      <div class="bc"><i class="fas fa-check-circle"></i><span>Microsoft Fabric</span></div>
-      <div class="bc"><i class="fas fa-check-circle"></i><span>Azure Databricks</span></div>
-      <div class="bc"><i class="fas fa-check-circle"></i><span>Python / PySpark</span></div>
-      <div class="bc"><i class="fas fa-check-circle"></i><span>Terraform / DevOps</span></div>
-    </div>
-    <div class="h-card avail-card">
-      <p><span class="dot"></span><strong>Open to Work</strong></p>
-      <div class="role-small">Senior Data Engineer roles</div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="n">7+</div><div class="l">Years Exp.</div></div>
+      <div class="stat-box"><div class="n">5</div><div class="l">Companies</div></div>
+      <div class="stat-box"><div class="n">10M+</div><div class="l">Records/Day</div></div>
+      <div class="stat-box"><div class="n">4</div><div class="l">Certs</div></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT STRIP -->
-<section class="about-strip">
-  <p>Senior Data Engineer with <span>7+ years of experience</span> specializing in designing and developing scalable data pipelines using <span>Python</span>, <span>PySpark</span>, <span>SQL</span>, <span>Terraform</span>, <span>Microsoft Fabric</span>, <span>Azure Synapse</span>, <span>Azure Data Factory</span>, and <span>Databricks</span>. Expert in production-grade ETL pipelines, data lakehouse architecture, and Microsoft Fabric migration. Experienced in collaborating with data scientists, leading cross-functional teams, and mentoring junior engineers.</p>
-  <div class="stats-row">
-    <div class="stat-box"><div class="sn">7+</div><div class="sl">Years Exp</div></div>
-    <div class="stat-box"><div class="sn">5</div><div class="sl">Companies</div></div>
-    <div class="stat-box"><div class="sn">10M+</div><div class="sl">Records/Day</div></div>
-    <div class="stat-box"><div class="sn">4</div><div class="sl">Certs</div></div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-title"><h2>About <span>Me</span></h2></div>
+    <div class="about-wrap">
+      <div>
+        <p>Senior Data Engineer with 7+ years of experience specialising in designing and developing scalable data pipelines. Proficient in Python (Pandas, Pydantic, PySpark), SQL, Terraform, Microsoft Fabric, Azure Synapse, Azure Data Factory, and Databricks.</p>
+        <p>Expert in building production-grade ETL pipelines on Azure, implementing data lakehouses with medallion architecture, and leading cross-functional teams in cloud migrations and data governance.</p>
+        <p>Committed to driving business intelligence and data strategy through robust engineering practices, mentorship, and extensive knowledge of CI/CD and cloud architecture.</p>
+      </div>
+      <ul class="info-list">
+        <li><i class="fas fa-map-marker-alt"></i> TW3, London, UK</li>
+        <li><i class="fas fa-phone"></i> (+44) 07767600108</li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:sangasanisriram@gmail.com">sangasanisriram@gmail.com</a></li>
+        <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/sriram-sangasani" target="_blank">Sriram Sangasani</a></li>
+        <li><i class="fas fa-briefcase"></i> Islington Council (Current)</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- SKILLS -->
-<section class="skills-section" id="skills">
-  <div class="section-header">
-    <div class="label">What I Work With</div>
-    <h2>Technical <span>Skills</span></h2>
-    <p>Technologies and tools I use to build production-grade data systems</p>
-  </div>
-  <div class="skills-grid">
-    <div class="sk-card">
-      <div class="icon">&#128013;</div>
-      <h4>Languages</h4>
-      <div class="desc">Core programming &amp; scripting</div>
-      <div class="tags">
-        <span class="tag pink">Python</span><span class="tag pink">PySpark</span><span class="tag pink">Pandas</span>
-        <span class="tag pink">Pydantic</span><span class="tag pink">SQL</span><span class="tag pink">Scala</span><span class="tag pink">NumPy</span>
-      </div>
-    </div>
-    <div class="sk-card">
-      <div class="icon">&#9729;&#65039;</div>
-      <h4>Azure &amp; Cloud</h4>
-      <div class="desc">Cloud data platforms &amp; services</div>
-      <div class="tags">
-        <span class="tag blue">Microsoft Fabric</span><span class="tag blue">Azure Data Factory</span>
-        <span class="tag blue">Databricks</span><span class="tag blue">Synapse Analytics</span>
-        <span class="tag blue">ADLS Gen2</span><span class="tag blue">Azure SQL DB</span>
-      </div>
-    </div>
-    <div class="sk-card">
-      <div class="icon">&#9881;&#65039;</div>
-      <h4>DevOps &amp; IaC</h4>
-      <div class="desc">Automation &amp; infrastructure</div>
-      <div class="tags">
-        <span class="tag green">Terraform</span><span class="tag green">Azure DevOps</span>
-        <span class="tag green">CI/CD</span><span class="tag green">Git</span><span class="tag green">YAML</span><span class="tag green">GitHub</span>
-      </div>
-    </div>
-    <div class="sk-card">
-      <div class="icon">&#128451;&#65039;</div>
-      <h4>Databases</h4>
-      <div class="desc">Storage &amp; query engines</div>
-      <div class="tags">
-        <span class="tag yellow">MS SQL Server</span><span class="tag yellow">PostgreSQL</span>
-        <span class="tag yellow">MongoDB</span><span class="tag yellow">MySQL</span>
-        <span class="tag yellow">T-SQL</span><span class="tag yellow">Delta Lake</span>
-      </div>
-    </div>
-    <div class="sk-card">
-      <div class="icon">&#128200;</div>
-      <h4>Big Data &amp; Streaming</h4>
-      <div class="desc">Large-scale data processing</div>
-      <div class="tags">
-        <span class="tag pink">Apache Kafka</span><span class="tag pink">Hadoop</span>
-        <span class="tag pink">Spark</span><span class="tag pink">KQL</span>
-        <span class="tag pink">Event Streams</span><span class="tag pink">Parquet</span>
-      </div>
-    </div>
-    <div class="sk-card">
-      <div class="icon">&#128279;</div>
-      <h4>Data Formats &amp; APIs</h4>
-      <div class="desc">Integration &amp; data exchange</div>
-      <div class="tags">
-        <span class="tag blue">REST APIs</span><span class="tag blue">JSON</span>
-        <span class="tag blue">CSV / Excel</span><span class="tag blue">Parquet</span>
-        <span class="tag blue">Delta Lake</span><span class="tag blue">MLOps</span>
-      </div>
+<section id="skills">
+  <div class="container">
+    <div class="sec-title"><h2>Technical <span>Skills</span></h2><p>Technologies I work with daily</p></div>
+    <div class="skills-grid">
+      <div class="skill-card"><h3><i class="fas fa-code"></i> Languages</h3><div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Pydantic</span><span class="tag">PySpark</span><span class="tag">NumPy</span><span class="tag">SQL</span><span class="tag">Scala</span></div></div>
+      <div class="skill-card"><h3><i class="fas fa-cloud"></i> Cloud & Infra</h3><div class="tags"><span class="tag">Microsoft Azure</span><span class="tag">GCP</span><span class="tag">AWS</span><span class="tag">Terraform</span><span class="tag">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Git</span></div></div>
+      <div class="skill-card"><h3><i class="fas fa-database"></i> ETL & Platforms</h3><div class="tags"><span class="tag">Microsoft Fabric</span><span class="tag">Azure Data Factory</span><span class="tag">Databricks</span><span class="tag">Azure Synapse</span><span class="tag">Hadoop</span><span class="tag">Kafka</span></div></div>
+      <div class="skill-card"><h3><i class="fas fa-server"></i> Databases</h3><div class="tags"><span class="tag">MS SQL Server</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">Oracle</span><span class="tag">T-SQL</span></div></div>
+      <div class="skill-card"><h3><i class="fas fa-file-alt"></i> Data Formats</h3><div class="tags"><span class="tag">REST APIs</span><span class="tag">Parquet</span><span class="tag">Delta Lake</span><span class="tag">JSON</span><span class="tag">CSV</span><span class="tag">ADLS</span></div></div>
+      <div class="skill-card"><h3><i class="fas fa-star"></i> Expertise</h3><div class="tags"><span class="tag">Medallion Architecture</span><span class="tag">Data Lakehouse</span><span class="tag">MLOps</span><span class="tag">Data Governance</span><span class="tag">Unity Catalog</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section class="exp-section" id="experience">
-  <div class="section-header">
-    <div class="label">Career Journey</div>
-    <h2>Work <span>Experience</span></h2>
-    <p>7+ years across public sector, fashion, gaming, consulting, and enterprise</p>
-  </div>
-  <div class="timeline">
-    <div class="t-item">
-      <div class="t-card">
-        <div class="t-card-top">
-          <h4>Senior Data Engineer</h4>
-          <span class="period">June 2024 &ndash; Present</span>
-        </div>
-        <div class="co"><i class="fas fa-building" style="margin-right:.4rem;"></i>London Borough of Islington Council</div>
+<section id="experience">
+  <div class="container">
+    <div class="sec-title"><h2>Work <span>Experience</span></h2><p>My professional journey across 7+ years</p></div>
+    <div class="timeline">
+
+      <div class="exp-item">
+        <div class="exp-top"><h3>Senior Data Engineer</h3><span class="period">June 2024 – Present</span></div>
+        <div class="company"><i class="fas fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>London Borough of Islington Council</div>
         <ul>
-          <li>Design and develop scalable data pipelines (Python/Pandas/Pydantic) processing <strong>10M+ daily records</strong></li>
-          <li>Translate business logic into Python implementations across <strong>50+ data sources</strong></li>
-          <li>Spearheaded migration from Azure Synapse to <strong>Microsoft Fabric</strong> leading a team of 5+</li>
-          <li>Architected Lakehouse solutions using medallion architecture in Microsoft Fabric</li>
-          <li>Developed real-time streaming using Fabric Event Streams and KQL</li>
-          <li>Deployed production code via CI/CD (Azure DevOps) with <strong>99.9% reliability</strong></li>
-          <li>Established data governance frameworks (row-level security, lineage, quality monitoring)</li>
-          <li>Mentor 3 junior data engineers</li>
+          <li>Design and develop scalable pipelines using Python (Pandas, Pydantic) processing <strong>10M+ records</strong> daily across 50+ data sources with 99.9% reliability.</li>
+          <li>Spearhead migration from Azure Synapse Analytics to <strong>Microsoft Fabric</strong> using medallion architecture.</li>
+          <li>Architect Lakehouse solutions with real-time streaming via Fabric Event Streams and KQL Database.</li>
+          <li>Deploy production code via Azure DevOps CI/CD pipelines; establish governance (row-level security, lineage, quality monitoring).</li>
+          <li>Mentor <strong>3 junior data engineers</strong> and collaborate with data scientists for ML/reporting datasets.</li>
+          <li>Extract data from APIs, Oracle, and SFTP; manage secure access controls and data privacy/compliance.</li>
         </ul>
-        <div class="tech-row">
-          <span class="tag pink">Python</span><span class="tag pink">Pandas</span><span class="tag blue">Microsoft Fabric</span>
-          <span class="tag blue">Azure Synapse</span><span class="tag green">Azure DevOps</span><span class="tag green">CI/CD</span>
-          <span class="tag blue">KQL</span><span class="tag yellow">SQL Server</span>
-        </div>
       </div>
-    </div>
-    <div class="t-item">
-      <div class="t-card">
-        <div class="t-card-top">
-          <h4>Data Engineer (Contract)</h4>
-          <span class="period">August 2023 &ndash; June 2024</span>
-        </div>
-        <div class="co"><i class="fas fa-building" style="margin-right:.4rem;"></i>Marni</div>
+
+      <div class="exp-item">
+        <div class="exp-top"><h3>Data Engineer (Contract)</h3><span class="period">Aug 2023 – June 2024</span></div>
+        <div class="company"><i class="fas fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>Marni</div>
         <ul>
-          <li>Designed and developed pipelines using <strong>Python, ADF, and Databricks</strong></li>
-          <li>Created reusable Python modules for API extraction, <strong>reducing dev time by 35%</strong></li>
-          <li>Implemented data validation using Pydantic; built transformation pipelines via Pandas</li>
-          <li>Leveraged Hadoop and Apache Kafka for real-time data ingestion and processing</li>
-          <li>Implemented <strong>MLOps practices</strong> via GitHub, Azure, and Databricks</li>
-          <li>Conducted code reviews and provided technical guidance to the team</li>
+          <li>Designed pipelines using Python, ADF, and Databricks; implemented MLOps practices with GitHub and Azure.</li>
+          <li>Created reusable Python modules for API extraction, <strong>reducing development time by 35%</strong>.</li>
+          <li>Built Pandas transformation pipelines with Pydantic validation; leveraged Hadoop and Kafka for real-time ingestion.</li>
+          <li>Conducted code reviews and established version control standards for the engineering team.</li>
         </ul>
-        <div class="tech-row">
-          <span class="tag pink">Python</span><span class="tag blue">ADF</span><span class="tag blue">Databricks</span>
-          <span class="tag pink">Kafka</span><span class="tag pink">Hadoop</span><span class="tag pink">Pydantic</span>
-          <span class="tag green">MLOps</span>
-        </div>
       </div>
-    </div>
-    <div class="t-item">
-      <div class="t-card">
-        <div class="t-card-top">
-          <h4>Azure Data Engineer</h4>
-          <span class="period">June 2022 &ndash; July 2023</span>
-        </div>
-        <div class="co"><i class="fas fa-building" style="margin-right:.4rem;"></i>BetWay</div>
+
+      <div class="exp-item">
+        <div class="exp-top"><h3>Azure Data Engineer</h3><span class="period">June 2022 – July 2023</span></div>
+        <div class="company"><i class="fas fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>BetWay</div>
         <ul>
-          <li>Designed scalable <strong>Python/PySpark pipelines</strong> for APIs and multiple data sources</li>
-          <li>Performed ETL/ELT processes, data transformations, validation and quality checks</li>
-          <li>Extracted changed records from on-prem servers via Change Tracking</li>
-          <li>Built Spark notebooks for data partitioning and organization in ADLS</li>
-          <li>Designed infrastructure with <strong>Terraform</strong> and configured CI/CD YAML pipelines</li>
-          <li>Utilized Unity Catalog for data organization and governance</li>
+          <li>Designed scalable Python (Pandas, PySpark) ETL/ELT pipelines with validation and quality checks.</li>
+          <li>Utilised <strong>Terraform</strong> for Azure infrastructure; configured CI/CD YAML pipelines and Unity Catalog.</li>
+          <li>Extracted changed records via Change Tracking; built dependency pipelines and checkpoint handling.</li>
+          <li>Developed Spark notebooks for ADLS partitioning; collaborated with AI/Data Science teams.</li>
         </ul>
-        <div class="tech-row">
-          <span class="tag pink">PySpark</span><span class="tag pink">Python</span><span class="tag blue">ADLS</span>
-          <span class="tag green">Terraform</span><span class="tag green">CI/CD</span><span class="tag blue">Unity Catalog</span>
-          <span class="tag yellow">SQL</span>
-        </div>
       </div>
-    </div>
-    <div class="t-item">
-      <div class="t-card">
-        <div class="t-card-top">
-          <h4>Cloud Data Engineer</h4>
-          <span class="period">July 2020 &ndash; May 2022</span>
-        </div>
-        <div class="co"><i class="fas fa-building" style="margin-right:.4rem;"></i>ROI Solutions</div>
+
+      <div class="exp-item">
+        <div class="exp-top"><h3>Cloud Data Engineer</h3><span class="period">July 2020 – May 2022</span></div>
+        <div class="company"><i class="fas fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>ROI Solutions</div>
         <ul>
-          <li>Developed pipelines using Python and ADF to extract from on-prem to Azure Data Lake</li>
-          <li>Managed Linked Services (Oracle, SQL Server, ADLS, BLOB)</li>
-          <li>Configured Azure Logic Apps for notifications and dynamic pipeline execution</li>
-          <li>Used <strong>Scala and Spark</strong> for big data processing across distributed clusters</li>
-          <li>Implemented PostgreSQL and MongoDB storage solutions</li>
-          <li>Deployed code via CI/CD processes and configured ADF triggers and monitoring</li>
+          <li>Designed ADF pipelines migrating on-prem data to Azure Data Lake following reference architecture.</li>
+          <li>Created Linked Services (Oracle, SQL Server, ADLS, BLOB) with dynamic multi-source pipelines.</li>
+          <li>Used Azure Key Vaults for secure connections; configured Logic Apps for email notifications.</li>
+          <li>Leveraged Scala and Spark for big data processing; implemented end-to-end logging frameworks.</li>
         </ul>
-        <div class="tech-row">
-          <span class="tag pink">Python</span><span class="tag blue">ADF</span><span class="tag pink">Scala</span>
-          <span class="tag pink">Spark</span><span class="tag yellow">PostgreSQL</span><span class="tag yellow">MongoDB</span>
-          <span class="tag green">CI/CD</span>
-        </div>
       </div>
-    </div>
-    <div class="t-item">
-      <div class="t-card">
-        <div class="t-card-top">
-          <h4>Oracle SQL Developer / L2 Support Engineer</h4>
-          <span class="period">September 2017 &ndash; October 2019</span>
-        </div>
-        <div class="co"><i class="fas fa-building" style="margin-right:.4rem;"></i>Accenture</div>
+
+      <div class="exp-item">
+        <div class="exp-top"><h3>Oracle (SQL) Developer / L2 Support Engineer</h3><span class="period">Sep 2017 – Oct 2019</span></div>
+        <div class="company"><i class="fas fa-building" style="font-size:.8rem;margin-right:.4rem;"></i>Accenture</div>
         <ul>
-          <li>Managed logging frameworks and job monitoring/scheduling</li>
-          <li>Analyzed load errors and performed database design using <strong>SQL Server</strong></li>
-          <li>Created database objects (tables, views, stored procedures, triggers, functions)</li>
-          <li>Developed data models and managed SLA status reporting</li>
-          <li>Conducted unit testing and transformed data between staging areas</li>
+          <li>Designed and maintained SQL Server databases; created tables, views, procedures, triggers, and functions.</li>
+          <li>Developed Stored Procedures for source-to-target transformations for financial data models.</li>
+          <li>Handled job monitoring, scheduling, and Process Chain failures with SLA management via Remedy.</li>
         </ul>
-        <div class="tech-row">
-          <span class="tag yellow">SQL Server</span><span class="tag yellow">Oracle</span><span class="tag yellow">T-SQL</span>
-          <span class="tag pink">PL/SQL</span><span class="tag yellow">MySQL</span>
-        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
-<section class="certs-section" id="certs">
-  <div class="section-header">
-    <div class="label">Credentials</div>
-    <h2>Certifi<span>cations</span></h2>
-    <p>Industry-recognised qualifications in cloud and data engineering</p>
-  </div>
-  <div class="certs-grid">
-    <div class="cert-card">
-      <div class="cert-icon">&#127959;&#65039;</div>
-      <h4>DP-600 Microsoft Fabric Analytics Engineer</h4>
-      <div class="date">September 2024</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">&#128200;</div>
-      <h4>Data Engineering with Databricks (ILT)</h4>
-      <div class="date">February 2023</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">&#9729;&#65039;</div>
-      <h4>Microsoft Azure Foundation</h4>
-      <div class="date">May 2023</div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">&#128295;</div>
-      <h4>HashiCorp Certified: Terraform Associate</h4>
-      <div class="date">September 2022</div>
+<section id="certifications">
+  <div class="container">
+    <div class="sec-title"><h2>Certifi<span>cations</span></h2><p>Professional qualifications</p></div>
+    <div class="certs-grid">
+      <div class="cert-card"><div class="icon">🏭</div><h4>DP-600 Microsoft Fabric Analytics Engineer</h4><span>Sep 2024</span></div>
+      <div class="cert-card"><div class="icon">🔥</div><h4>Data Engineering with Databricks (ILT)</h4><span>Feb 2023</span></div>
+      <div class="cert-card"><div class="icon">☁️</div><h4>Microsoft Azure Foundation</h4><span>May 2023</span></div>
+      <div class="cert-card"><div class="icon">🔧</div><h4>HashiCorp Certified: Terraform Associate</h4><span>Sep 2022</span></div>
     </div>
   </div>
 </section>
 
 <!-- EDUCATION -->
-<section class="edu-section" id="education">
-  <div class="section-header">
-    <div class="label">Academic Background</div>
-    <h2>Edu<span>cation</span></h2>
-  </div>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-icon">&#127979;</div>
-      <div>
-        <h4>Masters in Cyber Security &amp; Pen Testing</h4>
+<section id="education">
+  <div class="container">
+    <div class="sec-title"><h2>Edu<span>cation</span></h2></div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>Masters in Cyber Security & Pen Testing</h3>
         <div class="school">Middlesex University, London</div>
-        <div class="yr">2019 &ndash; 2020</div>
+        <div class="period">2019 – 2020</div>
       </div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-icon">&#127891;</div>
-      <div>
-        <h4>Bachelor of Technology in Computer Science</h4>
+      <div class="edu-card">
+        <h3>Bachelor of Technology – Computer Science</h3>
         <div class="school">Lovely Professional University, India</div>
-        <div class="yr">2014 &ndash; 2018</div>
+        <div class="period">2014 – 2018</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="section-header">
-    <div class="label">Get In Touch</div>
-    <h2>Let's <span>Connect</span></h2>
-  </div>
-  <p>Open to Senior Data Engineer opportunities in London and remote. Let's build something great together.</p>
-  <div class="contact-links">
-    <a href="/cdn-cgi/l/email-protection#7f0c1e11181e0c1e11160c0d160d1e123f18121e1613511c1012" class="contact-link cl1"><i class="fas fa-envelope"></i> Send Email</a>
-    <a href="https://linkedin.com/in/sriram-sangasani" target="_blank" class="contact-link cl2"><i class="fab fa-linkedin"></i> LinkedIn</a>
-    <a href="tel:+447767600108" class="contact-link cl3"><i class="fas fa-phone"></i> Call Me</a>
-    <a href="https://github.com/Sriramsangasani2" target="_blank" class="contact-link cl4"><i class="fab fa-github"></i> GitHub</a>
-  </div>
-  <div class="contact-info-grid">
-    <div class="ci-card"><i class="fas fa-map-marker-alt" style="color:#f0abfc;"></i><p>TW3, London, UK</p></div>
-    <div class="ci-card"><i class="fas fa-envelope" style="color:#38bdf8;"></i><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9cad8d7ded8cad8d7d0cacbd0cbd8d4f9ded4d8d0d597dad6d4">[email&#160;protected]</a></p></div>
-    <div class="ci-card"><i class="fas fa-phone" style="color:#4ade80;"></i><p>(+44) 07767600108</p></div>
+<section id="contact">
+  <div class="container">
+    <div class="sec-title"><h2>Get In <span>Touch</span></h2><p>I'd love to hear from you!</p></div>
+    <div class="contact-wrap">
+      <div class="contact-card"><div class="ci"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><a href="mailto:sangasanisriram@gmail.com">sangasanisriram@gmail.com</a></div></div>
+      <div class="contact-card"><div class="ci"><i class="fas fa-phone"></i></div><div><h4>Phone</h4><p>(+44) 07767600108</p></div></div>
+      <div class="contact-card"><div class="ci"><i class="fab fa-linkedin"></i></div><div><h4>LinkedIn</h4><a href="https://linkedin.com/in/sriram-sangasani" target="_blank">Sriram Sangasani</a></div></div>
+      <div class="contact-card"><div class="ci"><i class="fas fa-map-marker-alt"></i></div><div><h4>Location</h4><p>TW3, London, UK</p></div></div>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p>&#169; 2024 <span class="grad-text">Sriram Sangasani</span>. All rights reserved.</p>
-  <p style="color:rgba(255,255,255,.2);font-size:.75rem;">Senior Data Engineer &bull; London, UK</p>
+  <p>© 2025 Sriram Sangasani • Senior Data Engineer • London, UK</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</body>
 </html>
