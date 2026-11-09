@@ -7,9 +7,9 @@
   <meta name="description" content="Sriram Sangasani — Senior Data Engineer in London with 7+ years' experience in Microsoft Fabric, Azure Synapse, Databricks, Python, PySpark and Terraform.">
   <meta property="og:title" content="Sriram Sangasani | Senior Data Engineer">
   <meta property="og:description" content="Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.">
-  <meta property="og:image" content="assets/images/hero-data-platform.jpg">
+  <meta property="og:image" content="assets/images/profile.jpg">
   <title>Sriram Sangasani | Senior Data Engineer</title>
-  <link rel="preload" as="image" href="assets/images/hero-data-platform.webp" type="image/webp">
+  <link rel="preload" as="image" href="assets/images/profile.webp" type="image/webp">
 
   <style>
     :root {
@@ -86,8 +86,6 @@
     }
     .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 56px; }
     .hero-id { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
-    .avatar { width: 72px; height: 72px; border-radius: 50%; padding: 3px; background: var(--grad); flex: none; }
-    .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--navy-950); }
     .hero-id strong { display: block; font-size: 1.05rem; }
     .hero-id span { font-size: .85rem; color: var(--muted); }
     .status { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; margin-bottom: 22px; border: 1px solid rgb(45 212 191 / 35%); border-radius: 99px; background: rgb(45 212 191 / 8%); color: var(--turquoise-soft); font-size: .78rem; }
@@ -98,9 +96,14 @@
     .button:hover { transform: translateY(-2px); border-color: var(--violet-soft); }
     .button.primary { background: var(--grad); color: var(--navy-950); border: 0; box-shadow: 0 10px 30px rgb(139 92 246 / 30%); }
     .button.primary:hover { box-shadow: 0 14px 36px rgb(45 212 191 / 30%); }
-    .hero-visual { position: relative; }
-    .hero-visual picture img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 24px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgb(0 0 0 / 45%), 0 0 0 1px rgb(139 92 246 / 15%); }
-    .hero-badge { position: absolute; left: -18px; bottom: -18px; padding: 14px 18px; border-radius: 14px; background: rgb(17 26 64 / 92%); border: 1px solid var(--line); backdrop-filter: blur(10px); font-size: .8rem; }
+    .hero-visual { position: relative; width: min(100%, 460px); justify-self: center; aspect-ratio: 1; }
+    .hero-visual::before { content: ""; position: absolute; inset: -8%; border-radius: 50%; background: radial-gradient(circle, rgb(139 92 246 / 38%), rgb(45 212 191 / 14%) 55%, transparent 72%); filter: blur(24px); z-index: -1; }
+    .photo-ring { position: relative; width: 100%; height: 100%; border-radius: 50%; padding: 6px; background: conic-gradient(from 210deg, var(--violet), var(--turquoise), var(--violet-soft), var(--violet)); box-shadow: 0 30px 80px rgb(0 0 0 / 45%), 0 0 60px rgb(139 92 246 / 30%); }
+    .photo-ring picture, .photo-ring img { display: block; width: 100%; height: 100%; }
+    .photo-ring img { border-radius: 50%; object-fit: cover; border: 6px solid var(--navy-950); }
+    .hero-dot { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--turquoise); box-shadow: 0 0 0 6px rgb(45 212 191 / 18%); top: 12%; right: 6%; }
+    .hero-dot.alt { width: 12px; height: 12px; background: var(--violet-soft); box-shadow: 0 0 0 5px rgb(139 92 246 / 20%); top: auto; right: auto; bottom: 16%; left: 2%; }
+    .hero-badge { position: absolute; left: -10px; bottom: 4%; white-space: nowrap; padding: 14px 18px; border-radius: 14px; background: rgb(17 26 64 / 92%); border: 1px solid var(--line); backdrop-filter: blur(10px); font-size: .8rem; }
     .hero-badge b { display: block; color: var(--turquoise); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 3px; }
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 70px; }
     .stat { padding: 20px; border: 1px solid var(--line); border-radius: 16px; background: rgb(17 26 64 / 55%); }
@@ -109,8 +112,8 @@
 
     /* About */
     .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 60px; align-items: center; }
-    .portrait { position: relative; }
-    .portrait img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 24px; border: 1px solid var(--line); }
+    .portrait { position: relative; isolation: isolate; }
+    .portrait img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 24px; border: 1px solid var(--line); }
     .portrait::after { content: ""; position: absolute; inset: 14px -14px -14px 14px; border-radius: 24px; background: var(--grad); z-index: -1; opacity: .55; }
     .about-copy p { font-size: 1.02rem; }
     .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 26px; }
@@ -196,7 +199,7 @@
 
     @media (max-width: 1000px) {
       .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 44px; }
-      .hero-visual { max-width: 640px; }
+      .hero-visual { width: min(100%, 380px); order: -1; }
       .about-grid .portrait { max-width: 300px; }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .cert-grid, .contact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -212,7 +215,8 @@
       .js .nav-links { display: none; }
       .js .nav-links.open { display: flex; }
       .hero { padding-top: 56px; }
-      .hero-badge { left: 12px; bottom: -16px; }
+      .hero-badge { left: 50%; transform: translateX(-50%); bottom: -14px; font-size: .74rem; }
+      .hero-visual { width: min(82%, 320px); margin-bottom: 18px; }
       .stats { grid-template-columns: repeat(2, 1fr); margin-top: 50px; }
       .cases, .edu-grid { grid-template-columns: 1fr; }
       .case { padding: 24px; }
@@ -260,7 +264,6 @@
         <div class="hero-grid">
           <div>
             <div class="hero-id">
-              <div class="avatar"><img src="1718634827557.jpg" alt="Portrait of Sriram Sangasani" width="72" height="72"></div>
               <div><strong>Sriram Sangasani</strong><span>Senior Data Engineer · London, UK</span></div>
             </div>
             <div class="status">Open to Senior / Lead Data Engineering opportunities</div>
@@ -278,11 +281,13 @@
           </div>
 
           <div class="hero-visual">
-            <picture>
-              <source srcset="assets/images/hero-data-platform.webp" type="image/webp">
-              <img src="assets/images/hero-data-platform.jpg" width="1200" height="800"
-                   alt="Illustration of a layered cloud data platform: data sources flow through ingestion and transformation layers into analytics and AI outputs.">
-            </picture>
+            <div class="photo-ring">
+              <picture>
+                <source srcset="assets/images/profile.webp" type="image/webp">
+                <img src="assets/images/profile.jpg" width="640" height="640" alt="Portrait of Sriram Sangasani, Senior Data Engineer">
+              </picture>
+            </div>
+            <span class="hero-dot" aria-hidden="true"></span><span class="hero-dot alt" aria-hidden="true"></span>
             <div class="hero-badge"><b>Currently</b>Senior Data Engineer · Islington Council</div>
           </div>
         </div>
@@ -300,7 +305,10 @@
     <section class="section alt" id="about" aria-labelledby="about-title">
       <div class="container about-grid">
         <div class="portrait reveal">
-          <img src="1718634827557.jpg" alt="Sriram Sangasani" width="400" height="400" loading="lazy">
+          <picture>
+            <source srcset="assets/images/profile.webp" type="image/webp">
+            <img src="assets/images/profile.jpg" alt="Sriram Sangasani" width="640" height="640" loading="lazy">
+          </picture>
         </div>
         <div class="about-copy reveal">
           <span class="eyebrow">About</span>
