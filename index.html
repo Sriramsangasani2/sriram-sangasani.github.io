@@ -208,11 +208,20 @@
     @keyframes cue{to{top:100%}}
 
     /* portrait cut-out standing in the video */
-    .stage-person{position:absolute;right:clamp(-40px,4vw,90px);bottom:0;height:94%;aspect-ratio:820/1190;transform:translate3d(0,var(--ppy,0px),0) scale(var(--ps,1));transform-origin:50% 100%;animation:personIn 1.6s calc(var(--d) + .25s) cubic-bezier(.16,.84,.24,1) both;will-change:transform}
-    .stage-person img{width:100%;height:100%;object-fit:contain;object-position:bottom;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45)) sepia(.12) saturate(.92)}
-    .stage-person::before{content:"";position:absolute;left:-15%;right:-15%;top:12%;bottom:-5%;background:radial-gradient(closest-side,rgba(230,160,124,.45),rgba(230,160,124,0));filter:blur(20px);z-index:-1;animation:halo 6s ease-in-out infinite alternate}
+    .stage-media img.stage-bg{filter:brightness(.7) saturate(1.15);transform:scale(1.1)}
+    .stage-person{position:absolute;right:clamp(0px,7vw,140px);top:0;bottom:0;height:100%;aspect-ratio:9/16;transform:translate3d(0,var(--ppy,0px),0) scale(var(--ps,1));transform-origin:50% 100%;animation:personIn 1.6s calc(var(--d) + .25s) cubic-bezier(.16,.84,.24,1) both;will-change:transform;cursor:pointer;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%)}
+    .stage-person video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+    .play-intro{margin-top:26px;display:inline-flex;align-items:center;gap:14px;padding:8px 22px 8px 8px;border:1px solid rgba(245,239,227,.45);border-radius:999px;background:rgba(28,21,18,.35);color:var(--cream);font:600 15px/1 var(--sans,sans-serif);letter-spacing:.01em;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:fadeIn 1s calc(var(--d) + 1.2s) both;transition:background .3s,transform .3s}
+    .play-intro:hover{background:rgba(180,83,42,.65);transform:translateY(-2px)}
+    .pi-icon{position:relative;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--accent,#b5562f);color:#fff}
+    .pi-icon svg{width:18px;height:18px}
+    .pi-icon::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(230,160,124,.7);animation:ring 2s ease-out infinite}
+    .play-intro.on .pi-icon::after{animation:none;opacity:0}
+    @keyframes ring{from{transform:scale(.85);opacity:1}to{transform:scale(1.35);opacity:0}}
+    .talk-eq{display:none;gap:3px;align-items:flex-end;height:14px}.talk-eq i{width:3px;height:4px;background:#e6a07c;border-radius:2px;animation:eq .8s ease-in-out infinite alternate}
+    .talk-eq i:nth-child(2){animation-delay:.2s}.talk-eq i:nth-child(3){animation-delay:.4s}
+    .play-intro.on .talk-eq{display:inline-flex}
     @keyframes personIn{from{opacity:0;transform:translate3d(60px,40px,0) scale(1.08);filter:blur(8px)}to{opacity:1;filter:none}}
-    @keyframes halo{to{opacity:.55;transform:scale(1.08)}}
     .stage-fade{position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(transparent,rgba(28,21,18,.55));pointer-events:none}
     .motion-btn{position:absolute;right:clamp(20px,5vw,72px);top:24px;z-index:3;display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid rgba(245,239,227,.45);background:rgba(28,21,18,.35);color:var(--cream);font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:fadeIn 1s calc(var(--d) + 1.2s) backwards;opacity:var(--co,1)}
     .motion-btn:hover{background:rgba(180,83,42,.6)}
@@ -294,16 +303,7 @@
     .tool small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
     .seal.logo-seal{background:#fff;border-color:var(--line)}
     .seal.logo-seal img{width:30px;height:30px;object-fit:contain}
-    .talk{position:absolute;z-index:3;left:44%;top:clamp(80px,16vh,150px);width:clamp(150px,15vw,220px);margin:0;border-radius:22px;overflow:hidden;background:#2a1d16;box-shadow:0 24px 50px rgba(0,0,0,.4);border:3px solid rgba(246,239,228,.9);animation:fadeIn 1s calc(var(--d,0s) + 1.4s) both;transform:rotate(2deg);transition:transform .4s}
-    .talk:hover,.talk.on{transform:rotate(0) scale(1.04)}
-    .talk video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
-    .talk figcaption{position:absolute;left:10px;top:10px;display:flex;gap:6px;align-items:center;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#f6efe4;background:rgba(30,20,15,.55);padding:6px 8px;border-radius:99px;backdrop-filter:blur(6px)}
-    .talk-eq{display:inline-flex;gap:2px;align-items:flex-end;height:10px}.talk-eq i{width:2px;height:3px;background:#e6a07c}
-    .talk.on .talk-eq i{animation:eq .8s ease-in-out infinite alternate}.talk.on .talk-eq i:nth-child(2){animation-delay:.2s}.talk.on .talk-eq i:nth-child(3){animation-delay:.4s}
     @keyframes eq{to{height:10px}}
-    .talk-btn{position:absolute;left:8px;right:8px;bottom:8px;display:flex;gap:6px;align-items:center;justify-content:center;padding:9px 8px;border:0;border-radius:99px;background:var(--accent,#b5562f);color:#fff;font:600 12px/1.1 var(--sans,sans-serif);cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3)}
-    .talk-btn svg{width:14px;height:14px;flex:none}
-    @media (max-width:760px){.talk{left:auto;right:12px;width:112px;top:72px;right:12px;border-width:2px;border-radius:16px}.talk-btn{font-size:10px;padding:7px 6px}.talk figcaption{display:none}}
     @media (max-width:520px){.toolbox{grid-template-columns:repeat(2,1fr)}.tool{padding:18px 8px 14px}}
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr;gap:56px}
@@ -348,7 +348,8 @@
       .stage{height:150vh}
       .stage-title{font-size:clamp(2.7rem,15vw,4rem)}
       .stage-copy{max-width:none}
-      .stage-person{right:50%;translate:50% 0;height:72%;top:auto;opacity:.95}
+      .stage-person{right:0;left:0;width:100%;aspect-ratio:auto;-webkit-mask-image:none;mask-image:none}
+      .play-intro{margin-top:18px;font-size:14px}.pi-icon{width:40px;height:40px}
       .stage-fade{height:65%;background:linear-gradient(transparent,rgba(28,21,18,.85) 55%)}
       .stage-cue{display:none}
       .slider-hint{display:none}
@@ -402,22 +403,20 @@
   <section class="stage" id="stage" aria-label="Introduction">
     <div class="stage-sticky">
       <div class="stage-frame" id="stage-frame">
-        <div class="stage-media">
-          <img src="assets/intro-poster.jpg" alt="" width="1344" height="768">
+        <div class="stage-media" aria-hidden="true">
+          <img class="stage-bg" src="assets/hero-bg.jpg" alt="" width="1344" height="768">
+        </div>
+        <div class="stage-person" id="stage-person">
+          <video id="talk-video" playsinline preload="metadata" poster="assets/intro-talk-poster.jpg" aria-label="Sriram Sangasani video intro"><source src="assets/intro-talk.mp4" type="video/mp4"></video>
         </div>
         <div class="stage-scrim" aria-hidden="true"></div>
-        <div class="stage-person" id="stage-person"><img src="assets/sriram-cutout.webp" alt="Sriram Sangasani" width="820" height="1190" fetchpriority="high"></div>
         <div class="stage-fade" aria-hidden="true"></div>
-        <figure class="talk" id="talk">
-          <video id="talk-video" playsinline preload="metadata" poster="assets/intro-talk-poster.jpg"><source src="assets/intro-talk.mp4" type="video/mp4"></video>
-          <figcaption><span class="talk-eq" aria-hidden="true"><i></i><i></i><i></i></span><span>Hear my intro</span></figcaption>
-          <button type="button" class="talk-btn" id="talk-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span>Play intro with sound</span></button>
-        </figure>
         <div class="stage-copy">
           <span class="label">Hello, I'm</span>
           <div class="stage-title"><span class="w"><span>Sriram</span></span> <span class="w"><span>Sangasani</span></span></div>
           <div class="stage-role">Senior Data Engineer <span>·</span> London</div>
           <p>Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.</p>
+          <button type="button" class="play-intro" id="talk-btn" aria-pressed="false"><span class="pi-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="pi-label">Play my intro</span><span class="talk-eq" aria-hidden="true"><i></i><i></i><i></i></span></button>
         </div>
         <a class="stage-cue" href="#home">Scroll to explore <i aria-hidden="true"></i></a>
       </div>
@@ -754,12 +753,14 @@
   });
 })();
 
-(()=>{const f=document.getElementById('talk'),v=document.getElementById('talk-video'),b=document.getElementById('talk-btn');if(!f||!v||!b)return;
-const lbl=b.querySelector('span'),ic=b.querySelector('path');const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const set=(t,d)=>{lbl.textContent=t;ic.setAttribute('d',d)};
+(()=>{const v=document.getElementById('talk-video'),b=document.getElementById('talk-btn'),wrap=document.getElementById('stage-person');if(!v||!b)return;
+const lbl=b.querySelector('.pi-label'),ic=b.querySelector('path');const PLAY='M8 5v14l11-7z',PAUSE='M6 5h4v14H6zM14 5h4v14h-4z';
+const ui=(on,t)=>{b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);lbl.textContent=t;ic.setAttribute('d',on?PAUSE:PLAY)};
 v.pause();
-b.addEventListener('click',()=>{if(v.paused){v.loop=false;v.muted=false;v.currentTime=0;v.play().then(()=>{f.classList.add('on');b.setAttribute('aria-pressed','true');set('Pause','M6 5h4v14H6zM14 5h4v14h-4z')}).catch(()=>{})}else{v.pause();f.classList.remove('on');b.setAttribute('aria-pressed','false');set('Play intro with sound','M8 5v14l11-7z')}});
-v.addEventListener('ended',()=>{f.classList.remove('on');v.muted=true;b.setAttribute('aria-pressed','false');set('Replay with sound','M8 5v14l11-7z');v.currentTime=0;v.load();});})();
+const toggle=()=>{if(v.paused){v.muted=false;if(v.ended||v.currentTime>=v.duration-.1)v.currentTime=0;v.play().then(()=>ui(true,'Pause intro')).catch(()=>{})}else{v.pause();ui(false,'Resume intro')}};
+b.addEventListener('click',toggle);if(wrap)wrap.addEventListener('click',toggle);
+v.addEventListener('ended',()=>{ui(false,'Replay my intro');v.load();});
+new IntersectionObserver(([e])=>{if(!e.isIntersecting&&!v.paused){v.pause();ui(false,'Resume intro')}},{threshold:.15}).observe(v);})();
 </script>
 </body>
 </html>
