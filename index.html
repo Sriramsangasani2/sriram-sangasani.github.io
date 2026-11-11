@@ -188,7 +188,6 @@
     .stage-frame{position:relative;width:100%;height:100%;overflow:hidden;background:#1c1512;transform:scale(var(--fs,1));border-radius:var(--fr,0px);will-change:transform;box-shadow:0 40px 80px -40px rgba(43,36,32,calc(var(--p,0)*.8))}
     .stage-media{position:absolute;inset:0;animation:introZoom 2.4s var(--d) cubic-bezier(.16,.84,.24,1) both}
     .stage-media video,.stage-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--vs,1.08))}
-    .stage-media img{display:none}
     @keyframes introZoom{from{transform:scale(1.45);filter:blur(6px) brightness(.6)}to{transform:none;filter:none}}
     .stage-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(245,239,227,.10) 0%,rgba(245,239,227,0) 35%,rgba(28,21,18,.25) 60%,rgba(28,21,18,.78) 100%),linear-gradient(90deg,rgba(28,21,18,.55),rgba(28,21,18,0) 65%)}
     .stage-copy{z-index:2;max-width:min(640px,60%);position:absolute;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);bottom:clamp(64px,11vh,110px);color:var(--cream);opacity:var(--co,1);transform:translateY(var(--cy,0px))}
@@ -198,6 +197,8 @@
     .stage-title .w span{display:inline-block;animation:wordUp 1.1s calc(var(--d) + .5s) cubic-bezier(.2,.8,.2,1) both}
     .stage-title .w:nth-child(2) span{animation-delay:calc(var(--d) + .68s);font-style:italic;color:#e6a07c}
     .stage-copy p{max-width:46ch;margin:0;font-size:clamp(1rem,1.6vw,1.2rem);color:#eadfce;animation:fadeIn 1s calc(var(--d) + 1s) both}
+    .stage-role{font-family:var(--sans,sans-serif);font-weight:600;font-size:clamp(1.15rem,2.2vw,1.6rem);letter-spacing:.01em;color:var(--cream);margin:0 0 10px;animation:fadeIn 1s calc(var(--d) + .85s) both}
+    .stage-role span{color:#e6a07c;margin:0 .25em}
     .stage-copy .label{animation:fadeIn 1s calc(var(--d) + .35s) both}
     @keyframes wordUp{from{transform:translateY(105%)}to{transform:none}}
     @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -402,22 +403,21 @@
     <div class="stage-sticky">
       <div class="stage-frame" id="stage-frame">
         <div class="stage-media">
-          <video id="intro-video" muted loop playsinline preload="auto" poster="assets/intro-poster.jpg" aria-hidden="true"><source src="assets/intro.mp4" type="video/mp4"></video>
           <img src="assets/intro-poster.jpg" alt="" width="1344" height="768">
         </div>
         <div class="stage-scrim" aria-hidden="true"></div>
         <div class="stage-person" id="stage-person"><img src="assets/sriram-cutout.webp" alt="Sriram Sangasani" width="820" height="1190" fetchpriority="high"></div>
         <div class="stage-fade" aria-hidden="true"></div>
-        <button type="button" class="motion-btn" id="motion-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><span>Pause motion</span></button>
         <figure class="talk" id="talk">
-          <video id="talk-video" muted playsinline preload="metadata" poster="assets/intro-talk-poster.jpg"><source src="assets/intro-talk.mp4" type="video/mp4"></video>
-          <figcaption><span class="talk-eq" aria-hidden="true"><i></i><i></i><i></i></span><span>A 10-second hello</span></figcaption>
+          <video id="talk-video" playsinline preload="metadata" poster="assets/intro-talk-poster.jpg"><source src="assets/intro-talk.mp4" type="video/mp4"></video>
+          <figcaption><span class="talk-eq" aria-hidden="true"><i></i><i></i><i></i></span><span>Hear my intro</span></figcaption>
           <button type="button" class="talk-btn" id="talk-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span>Play intro with sound</span></button>
         </figure>
         <div class="stage-copy">
           <span class="label">Hello, I'm</span>
           <div class="stage-title"><span class="w"><span>Sriram</span></span> <span class="w"><span>Sangasani</span></span></div>
-          <p><strong style="color:var(--cream);font-weight:600">Senior Data Engineer, London.</strong> Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.</p>
+          <div class="stage-role">Senior Data Engineer <span>·</span> London</div>
+          <p>Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.</p>
         </div>
         <a class="stage-cue" href="#home">Scroll to explore <i aria-hidden="true"></i></a>
       </div>
@@ -429,7 +429,7 @@
       <div class="hero-grid">
         <div>
           <div class="status reveal"><span class="dot"></span>Open to Senior &amp; Lead roles · London, UK</div>
-          <h1 class="reveal">Sriram<br><em class="acc">Sangasani</em><span class="role">Senior Data Engineer, London.</span></h1>
+          <h1 class="reveal">Sriram<br><em class="acc">Sangasani</em><span class="role">Senior Data Engineer · London</span></h1>
           <p class="lead reveal">Lakehouses, pipelines and cloud data platforms on <strong>Microsoft Fabric, Azure and Databricks</strong>.</p>
           <div class="cta reveal">
             <a href="#work" class="btn btn-solid">View my work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -757,9 +757,9 @@
 (()=>{const f=document.getElementById('talk'),v=document.getElementById('talk-video'),b=document.getElementById('talk-btn');if(!f||!v||!b)return;
 const lbl=b.querySelector('span'),ic=b.querySelector('path');const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const set=(t,d)=>{lbl.textContent=t;ic.setAttribute('d',d)};
-if(!rm){v.muted=true;v.loop=true;v.play().catch(()=>{})}
-b.addEventListener('click',()=>{if(v.muted||v.paused){v.loop=false;v.muted=false;v.currentTime=0;v.play().then(()=>{f.classList.add('on');b.setAttribute('aria-pressed','true');set('Mute','M16 9v6M20 9v6M4 9h4l5-4v14l-5-4H4z')}).catch(()=>{})}else{v.muted=true;f.classList.remove('on');b.setAttribute('aria-pressed','false');set('Play intro with sound','M8 5v14l11-7z')}});
-v.addEventListener('ended',()=>{f.classList.remove('on');v.muted=true;b.setAttribute('aria-pressed','false');set('Replay with sound','M8 5v14l11-7z');if(!rm){v.loop=true;v.play().catch(()=>{})}});})();
+v.pause();
+b.addEventListener('click',()=>{if(v.paused){v.loop=false;v.muted=false;v.currentTime=0;v.play().then(()=>{f.classList.add('on');b.setAttribute('aria-pressed','true');set('Pause','M6 5h4v14H6zM14 5h4v14h-4z')}).catch(()=>{})}else{v.pause();f.classList.remove('on');b.setAttribute('aria-pressed','false');set('Play intro with sound','M8 5v14l11-7z')}});
+v.addEventListener('ended',()=>{f.classList.remove('on');v.muted=true;b.setAttribute('aria-pressed','false');set('Replay with sound','M8 5v14l11-7z');v.currentTime=0;v.load();});})();
 </script>
 </body>
 </html>
