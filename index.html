@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5efe3">
   <meta name="color-scheme" content="light">
-  <title>Sriram Sangasani | Senior Data Engineer</title>
-  <meta name="description" content="Sriram Sangasani: Senior Data Engineer in London with 7+ years' experience in Microsoft Fabric, Azure Synapse, Databricks, Python, PySpark and Terraform.">
+  <title>Sriram Sangasani — Senior Data Engineer, London</title>
+  <meta name="description" content="Sriram Sangasani — Senior Data Engineer, London. Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.">
   <meta property="og:title" content="Sriram Sangasani | Senior Data Engineer">
-  <meta property="og:description" content="Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.">
+  <meta property="og:description" content="Senior Data Engineer, London. Lakehouses, pipelines and cloud data platforms on Microsoft Fabric, Azure and Databricks.">
   <meta property="og:image" content="sriram-og.jpg">
   <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b2420'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-style='italic' text-anchor='middle' fill='%23f5efe3'%3ES%3C/text%3E%3Ccircle cx='50' cy='44' r='4' fill='%23b4532a'/%3E%3C/svg%3E">
@@ -293,6 +293,16 @@
     .tool small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
     .seal.logo-seal{background:#fff;border-color:var(--line)}
     .seal.logo-seal img{width:30px;height:30px;object-fit:contain}
+    .talk{position:absolute;z-index:3;left:44%;top:clamp(80px,16vh,150px);width:clamp(150px,15vw,220px);margin:0;border-radius:22px;overflow:hidden;background:#2a1d16;box-shadow:0 24px 50px rgba(0,0,0,.4);border:3px solid rgba(246,239,228,.9);animation:fadeIn 1s calc(var(--d,0s) + 1.4s) both;transform:rotate(2deg);transition:transform .4s}
+    .talk:hover,.talk.on{transform:rotate(0) scale(1.04)}
+    .talk video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
+    .talk figcaption{position:absolute;left:10px;top:10px;display:flex;gap:6px;align-items:center;font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#f6efe4;background:rgba(30,20,15,.55);padding:6px 8px;border-radius:99px;backdrop-filter:blur(6px)}
+    .talk-eq{display:inline-flex;gap:2px;align-items:flex-end;height:10px}.talk-eq i{width:2px;height:3px;background:#e6a07c}
+    .talk.on .talk-eq i{animation:eq .8s ease-in-out infinite alternate}.talk.on .talk-eq i:nth-child(2){animation-delay:.2s}.talk.on .talk-eq i:nth-child(3){animation-delay:.4s}
+    @keyframes eq{to{height:10px}}
+    .talk-btn{position:absolute;left:8px;right:8px;bottom:8px;display:flex;gap:6px;align-items:center;justify-content:center;padding:9px 8px;border:0;border-radius:99px;background:var(--accent,#b5562f);color:#fff;font:600 12px/1.1 var(--sans,sans-serif);cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+    .talk-btn svg{width:14px;height:14px;flex:none}
+    @media (max-width:760px){.talk{left:auto;right:12px;width:112px;top:72px;right:12px;border-width:2px;border-radius:16px}.talk-btn{font-size:10px;padding:7px 6px}.talk figcaption{display:none}}
     @media (max-width:520px){.toolbox{grid-template-columns:repeat(2,1fr)}.tool{padding:18px 8px 14px}}
     @media (max-width:980px){
       .hero-grid{grid-template-columns:1fr;gap:56px}
@@ -399,6 +409,11 @@
         <div class="stage-person" id="stage-person"><img src="assets/sriram-cutout.webp" alt="Sriram Sangasani" width="820" height="1190" fetchpriority="high"></div>
         <div class="stage-fade" aria-hidden="true"></div>
         <button type="button" class="motion-btn" id="motion-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><span>Pause motion</span></button>
+        <figure class="talk" id="talk">
+          <video id="talk-video" muted playsinline preload="metadata" poster="assets/intro-talk-poster.jpg"><source src="assets/intro-talk.mp4" type="video/mp4"></video>
+          <figcaption><span class="talk-eq" aria-hidden="true"><i></i><i></i><i></i></span><span>A 10-second hello</span></figcaption>
+          <button type="button" class="talk-btn" id="talk-btn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span>Play intro with sound</span></button>
+        </figure>
         <div class="stage-copy">
           <span class="label">Hello, I'm</span>
           <div class="stage-title"><span class="w"><span>Sriram</span></span> <span class="w"><span>Sangasani</span></span></div>
@@ -414,8 +429,8 @@
       <div class="hero-grid">
         <div>
           <div class="status reveal"><span class="dot"></span>Open to Senior &amp; Lead roles · London, UK</div>
-          <h1 class="reveal">Sriram<br><em class="acc">Sangasani</em><span class="role">Senior Data Engineer — I engineer data that scales.</span></h1>
-          <p class="lead reveal">Senior Data Engineer with <strong>7+ years' experience</strong> designing Lakehouses, Python &amp; PySpark pipelines and Terraform-managed infrastructure on <strong>Microsoft Fabric, Azure and Databricks</strong>.</p>
+          <h1 class="reveal">Sriram<br><em class="acc">Sangasani</em><span class="role">Senior Data Engineer, London.</span></h1>
+          <p class="lead reveal">Lakehouses, pipelines and cloud data platforms on <strong>Microsoft Fabric, Azure and Databricks</strong>.</p>
           <div class="cta reveal">
             <a href="#work" class="btn btn-solid">View my work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             <a href="#contact" class="btn">Get in touch</a>
@@ -738,6 +753,13 @@
     try { await navigator.clipboard.writeText(em); show('Email copied to clipboard'); } catch { show(em); }
   });
 })();
+
+(()=>{const f=document.getElementById('talk'),v=document.getElementById('talk-video'),b=document.getElementById('talk-btn');if(!f||!v||!b)return;
+const lbl=b.querySelector('span'),ic=b.querySelector('path');const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const set=(t,d)=>{lbl.textContent=t;ic.setAttribute('d',d)};
+if(!rm){v.muted=true;v.loop=true;v.play().catch(()=>{})}
+b.addEventListener('click',()=>{if(v.muted||v.paused){v.loop=false;v.muted=false;v.currentTime=0;v.play().then(()=>{f.classList.add('on');b.setAttribute('aria-pressed','true');set('Mute','M16 9v6M20 9v6M4 9h4l5-4v14l-5-4H4z')}).catch(()=>{})}else{v.muted=true;f.classList.remove('on');b.setAttribute('aria-pressed','false');set('Play intro with sound','M8 5v14l11-7z')}});
+v.addEventListener('ended',()=>{f.classList.remove('on');v.muted=true;b.setAttribute('aria-pressed','false');set('Replay with sound','M8 5v14l11-7z');if(!rm){v.loop=true;v.play().catch(()=>{})}});})();
 </script>
 </body>
 </html>
